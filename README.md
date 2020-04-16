@@ -10,13 +10,13 @@ git clone https://github.com/RRDC-SL/WebDocker && cd WebDocker/
 
 ### Build the image
 ```
-docker build -t $USER/WebDocker .
+docker build -t $USER/rrdc-web .
 ```
 
 ### Run it
 Note dest:source on ports
 ```
-docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 8000:80 -p 13306:3306 --name RRDC-HTTP $USER/WebDocker
+docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 8000:80 -p 13306:3306 --name rrdc-web $USER/rrdc-web
 ```
 
 ### Connect to MariaDB
