@@ -67,7 +67,7 @@ RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \
 COPY entry.sh /entry.sh
 
 RUN chmod u+x /entry.sh
-WORKDIR /home/rrdc/Database/public_html
+WORKDIR /var/www/localhost/htdocs/
 
 EXPOSE 80
 EXPOSE 3306
