@@ -5,8 +5,8 @@ mkdir -p /usr/share/webapps/ && cd /usr/share/webapps/ && \
     tar -xzvf phpMyAdmin-5.0.2-all-languages.tar.gz > /dev/null 2>&1 && \
     mv phpMyAdmin-5.0.2-all-languages.tar.gz phpmyadmin && \
     chmod -R 777 /usr/share/webapps/ && \
-    ln -s /usr/share/webapps/phpmyadmin/ /home/rrdc/Database/phpmyadmin
-
+    ln -s /usr/share/webapps/phpmyadmin/ /var/www/localhost/htdocs/phpmyadmin
+    
 # start apache
 echo "Starting httpd"
 httpd
