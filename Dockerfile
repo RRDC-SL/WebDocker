@@ -28,7 +28,8 @@ RUN apk add mariadb mariadb-client \
     php7-mbstring \
     php7-apcu \
     php7-opcache \
-    php7-tokenizer
+    php7-tokenizer \
+    git
 
 #    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
 #    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \
@@ -66,8 +67,7 @@ RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \
 COPY entry.sh /entry.sh
 
 RUN chmod u+x /entry.sh
-
-WORKDIR /home/rrdc/Database
+WORKDIR /home/rrdc/Database/public_html
 
 EXPOSE 80
 EXPOSE 3306
