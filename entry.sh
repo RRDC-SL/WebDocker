@@ -54,6 +54,3 @@ echo "Done query"
 # nohup mysqld_safe --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &
 echo "Starting mariadb database"
 exec /usr/bin/mysqld --user=root --bind-address=0.0.0.0
-
-cd /home/rrdc/
-git clone git clone https://github.com/RRDC-SL/Database
