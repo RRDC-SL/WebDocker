@@ -16,7 +16,7 @@ docker build -t $USER/WebDocker .
 ### Run it
 Note dest:source on ports
 ```
-docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 8000:80 -p 13306:3306 --name lamp $USER/alpine-lamp
+docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 8000:80 -p 13306:3306 --name RRDC-HTTP $USER/WebDocker
 ```
 
 ### Connect to MariaDB
