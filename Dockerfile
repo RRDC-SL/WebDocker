@@ -1,37 +1,70 @@
-FROM ubuntu:18.04
-RUN apt update -y
-RUN apt install software-properties-common -y
-RUN add-apt-repository ppa:ondrej/php -y
-RUN apt update -y
-RUN apt install mariadb-server \
-    mariadb-client \
-    apache2 \ 
-    apache2-utils \
-    curl wget \
-    php7.4 \
-    php7.4-common \
-    php7.4-mysql \ 
-    php7.4-xml \
-    php7.4-xmlrpc \
-    php7.4-curl \ 
-    php7.4-gd \
-    php7.4-imagick \
-    php7.4-cli \
-    php7.4-dev \
-    php7.4-imap \
-    php7.4-mbstring \
-    php7.4-opcache \
-    php7.4-soap \
-    php7.4-zip \
-    php7.4-intl \
-    git -y
+FROM alpine:3.11
+ENV TIMEZONE Europe/London
+
+# PHP_INI_DIR to be symmetrical with official php docker image
+ENV PHP_INI_DIR /etc/php/7.4
+
+# When using Composer, disable the warning about running commands as root/super user
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+# Persistent runtime dependencies
+ARG DEPS="\
+        maria \
+        maria-client \
+        php7.4 \
+        php7.4-phar \
+        php7.4-bcmath \
+        php7.4-calendar \
+        php7.4-mbstring \
+        php7.4-exif \
+        php7.4-ftp \
+        php7.4-openssl \
+        php7.4-zip \
+        php7.4-sysvsem \
+        php7.4-sysvshm \
+        php7.4-sysvmsg \
+        php7.4-shmop \
+        php7.4-sockets \
+        php7.4-zlib \
+        php7.4-bz2 \
+        php7.4-curl \
+        php7.4-simplexml \
+        php7.4-xml \
+        php7.4-opcache \
+        php7.4-dom \
+        php7.4-xmlreader \
+        php7.4-xmlwriter \
+        php7.4-tokenizer \
+        php7.4-ctype \
+        php7.4-session \
+        php7.4-fileinfo \
+        php7.4-iconv \
+        php7.4-json \
+        php7.4-posix \
+        php7.4-apache2 \
+        curl \
+        ca-certificates \
+        runit \
+        apache2 \
+"
+ADD https://repos.php.earth/alpine/phpearth.rsa.pub /etc/apk/keys/phpearth.rsa.pub
+RUN set -x \
+    && echo "https://repos.php.earth/alpine/v3.9" >> /etc/apk/repositories \
+    && apk add --no-cache $DEPS \
+    && mkdir -p /run/apache2 \
+    && ln -sf /dev/stdout /var/log/apache2/access.log \
+    && ln -sf /dev/stderr /var/log/apache2/error.log
+    
+COPY tags/apache /
 
 #    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
 #    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \
 #    sed -i 's#^DocumentRoot ".*#DocumentRoot "/var/www/localhost/htdocs"#g' /etc/apache2/httpd.conf && \
 
 # configure timezone, mysql, apache
-RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql && \
+RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
+    echo "${TIMEZONE}" > /etc/timezone && \
+    mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql && \
     mkdir -p /run/apache2 && chown -R apache:apache /run/apache2 && chown -R apache:apache /var/www/localhost/htdocs/ && \
     sed -i 's#\#LoadModule rewrite_module modules\/mod_rewrite.so#LoadModule rewrite_module modules\/mod_rewrite.so#' /etc/apache2/httpd.conf && \
     sed -i 's#ServerName www.example.com:80#\nServerName localhost:80#' /etc/apache2/httpd.conf && \
