@@ -12,7 +12,7 @@ ARG DEPS="\
         mariadb \
         mariadb-client \
         php7.4 \
-        php7.7-mysql \
+        php7.4-mysql \
         php7.4-phar \
         php7.4-bcmath \
         php7.4-calendar \
