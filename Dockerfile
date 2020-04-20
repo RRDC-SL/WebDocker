@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.9
 ENV TIMEZONE Europe/London
 
 # PHP_INI_DIR to be symmetrical with official php docker image
