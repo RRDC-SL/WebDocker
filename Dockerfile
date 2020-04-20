@@ -6,29 +6,29 @@ RUN apk add mariadb mariadb-client \
     apache2-utils \
     curl wget \
     tzdata \
-    php7-apache2 \
-    php7-cli \
-    php7-phar \
-    php7-zlib \
-    php7-zip \
-    php7-bz2 \
-    php7-ctype \
-    php7-curl \
-    php7-pdo_mysql \
-    php7-mysqli \
-    php7-json \
-    php7-mcrypt \
-    php7-xml \
-    php7-dom \
-    php7-iconv \
-    php7-xdebug \
-    php7-session \
-    php7-intl \
-    php7-gd \
-    php7-mbstring \
-    php7-apcu \
-    php7-opcache \
-    php7-tokenizer \
+    php7.4-apache2 \
+    php7.4-cli \
+    php7.4-phar \
+    php7.4-zlib \
+    php7.4-zip \
+    php7.4-bz2 \
+    php7.4-ctype \
+    php7.4-curl \
+    php7.4-pdo_mysql \
+    php7.4-mysqli \
+    php7.4-json \
+    php7.4-mcrypt \
+    php7.4-xml \
+    php7.4-dom \
+    php7.4-iconv \
+    php7.4-xdebug \
+    php7.4-session \
+    php7.4-intl \
+    php7.4-gd \
+    php7.4-mbstring \
+    php7.4-apcu \
+    php7.4-opcache \
+    php7.4-tokenizer \
     git
 
 #    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
