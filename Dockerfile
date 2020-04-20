@@ -9,8 +9,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Persistent runtime dependencies
 ARG DEPS="\
-        maria \
-        maria-client \
+        mariadb \
+        mariadb-client \
         php7.4 \
         php7.4-phar \
         php7.4-bcmath \
