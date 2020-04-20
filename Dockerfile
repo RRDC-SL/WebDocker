@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 ENV TIMEZONE Europe/London
 RUN apt update && apt upgrade -y
 RUN apt install software-properties-common -y
