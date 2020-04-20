@@ -1,9 +1,9 @@
 FROM ubuntu:16.04
 ENV TIMEZONE Europe/London
-RUN apt update && apt upgrade
-RUN apt install software-properties-common
-RUN add-apt-repository ppa:ondrej/php
-RUN apt update
+RUN apt update && apt upgrade -y
+RUN apt install software-properties-common -y
+RUN add-apt-repository ppa:ondrej/php -y
+RUN apt update  -y
 RUN apk add mariadb mariadb-client \
     apache2 \ 
     apache2-utils \
