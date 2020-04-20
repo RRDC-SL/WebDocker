@@ -54,8 +54,6 @@ RUN set -x \
     && mkdir -p /run/apache2 \
     && ln -sf /dev/stdout /var/log/apache2/access.log \
     && ln -sf /dev/stderr /var/log/apache2/error.log
-    
-COPY tags/apache /
 
 #    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
 #    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \
