@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.11
 ENV TIMEZONE Europe/London
 
 # PHP_INI_DIR to be symmetrical with official php docker image
@@ -12,6 +12,7 @@ ARG DEPS="\
         mariadb \
         mariadb-client \
         php7.4 \
+        php7.7-mysql \
         php7.4-phar \
         php7.4-bcmath \
         php7.4-calendar \
@@ -46,6 +47,9 @@ ARG DEPS="\
         ca-certificates \
         runit \
         apache2 \
+        wget \
+        tzdata \
+        pache2-utils 
 "
 ADD https://repos.php.earth/alpine/phpearth.rsa.pub /etc/apk/keys/phpearth.rsa.pub
 RUN set -x \
