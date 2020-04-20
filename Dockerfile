@@ -4,7 +4,8 @@ RUN apt update && apt upgrade -y
 RUN apt install software-properties-common -y
 RUN add-apt-repository ppa:ondrej/php -y
 RUN apt update  -y
-RUN apt install mariadb mariadb-client \
+RUN apt install mariadb-server \
+    mariadb-client \
     apache2 \ 
     apache2-utils \
     curl wget \
