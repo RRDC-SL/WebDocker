@@ -8,7 +8,6 @@ RUN apt install mariadb-server \
     apache2 \ 
     apache2-utils \
     curl wget \
-    tzdata \
     php7.4 \
     php7.4-common \
     php7.4-mysql \ 
