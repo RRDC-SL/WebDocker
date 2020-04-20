@@ -3,7 +3,7 @@ ENV TIMEZONE Europe/London
 RUN apt update && apt upgrade -y
 RUN apt install software-properties-common -y
 RUN add-apt-repository ppa:ondrej/php -y
-RUN apt update  -y
+RUN apt update -y
 RUN apt install mariadb-server \
     mariadb-client \
     apache2 \ 
@@ -26,7 +26,7 @@ RUN apt install mariadb-server \
     php7.4-soap \
     php7.4-zip \
     php7.4-intl \
-    git
+    git -y
 
 #    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
 #    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \
