@@ -51,9 +51,16 @@ ARG DEPS="\
         tzdata \
         apache2-utils "
         
-ADD https://repos.php.earth/alpine/phpearth.rsa.pub /etc/apk/keys/phpearth.rsa.pub
+# trust this project public key to trust the packages.
+ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
+
+## you may join the multiple run lines here to make it a single layer
+
+# make sure you can use HTTPS
+RUN apk --update add ca-certificates
+
 RUN set -x \
-    && echo "https://repos.php.earth/alpine/v3.9" >> /etc/apk/repositories \
+    && echo "https://dl.bintray.com/php-alpine/v3.10/php-7.4" >> /etc/apk/repositories \
     && apk add --no-cache $DEPS \
     && mkdir -p /run/apache2 \
     && ln -sf /dev/stdout /var/log/apache2/access.log \
