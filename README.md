@@ -16,7 +16,7 @@ docker build -t $USER/rrdc-web .
 ### Run it
 Note dest:source on ports
 ```
-docker run -d -v /path/to/project:/home/rrdc/Database/public_html -e MYSQL_ROOT_PASSWORD=password -p 8000:80 -p 13306:3306 --name rrdc-web $USER/rrdc-web
+docker run -d -v /htmlpath:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 8000:80 -p 13306:3306 --name rrdc $USER/rrdc-web
 ```
 
 ### Connect to MariaDB
